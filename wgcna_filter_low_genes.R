@@ -6,7 +6,6 @@ wgcna_filter_low_genes <- function(df, min_expr = 10, percent_cutoff = .9) {
     stop("Make sure first column in dataframe is a list of gene names")
     }
   else {
-    library(tidyverse)
     rownames(df) <- df[, 1]
     df2 <- df[, -1]
     df2$equal_or_less_10 <- rowSums(df2 <= min_expr)
