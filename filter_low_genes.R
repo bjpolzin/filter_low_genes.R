@@ -9,7 +9,7 @@ filter_low_genes <- function(df, min_expr = 10, percent_cutoff = 90,
     dec_cutoff <- percent_cutoff/100
     df_t_orig <- df %>% t() %>% as.data.frame()
     df_t <- df_t_orig
-    df_t$genes_w_out_min_expr <- rowSums(df_t <= min_expr)
+    df_t$genes_w_out_min_expr <- rowSums(df_t >= min_expr)
     cutoff <- dec_cutoff * ncol(df_t_orig)
     rounded_cutoff <- ceiling(cutoff)
     df_t_filt <- df_t %>% dplyr::filter(genes_w_out_min_expr <= cutoff)
