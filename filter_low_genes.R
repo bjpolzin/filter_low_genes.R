@@ -8,6 +8,7 @@ filter_low_genes <- function(df, min_expr = 10, percent_cutoff = 90,
     samples_num <- nrow(df)
     dec_cutoff <- percent_cutoff/100
     df_t_orig <- df %>% t() %>% as.data.frame()
+    df_t <- df_t_orig
     df_t$samples_w_min_expr <- rowSums(df_t >= min_expr)
     cutoff <- dec_cutoff * samples_num
     rounded_cutoff <- ceiling(cutoff)
